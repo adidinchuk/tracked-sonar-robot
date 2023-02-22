@@ -45,9 +45,9 @@ class MotorControl():
 if __name__ == '__main__':
 
     GPIO.setmode(GPIO.BCM)
-    enable_pin = 1
-    forward_pin = 2
-    reverse_pin = 3
+    enable_pin = 25
+    forward_pin = 23
+    reverse_pin = 24
     print("\n")
     print("Running motor control test on pins e-", enable_pin, " f-", forward_pin, " r-", reverse_pin)
     print("s-stop #-for speed e-exit")
