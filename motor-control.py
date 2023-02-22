@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     while(1):
 
-        x=raw_input()        
+        x=input()        
 
         if x=='s':
             print("stop")
