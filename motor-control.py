@@ -11,15 +11,15 @@ class MotorControl():
         self._reverse_pin = reverse_pin
         self._enable_pin = enable_pin
         self.gpio = gpio
-        GPIO.setmode(self.gpio.BCM)
+        self.gpio.setmode(self.gpio.BCM)
 
-        GPIO.setup(self._forward_pin, self.gpio.OUT)
-        GPIO.output(self._forward_pin, self.gpio.LOW)
-        GPIO.setup(self._reverse_pin, self.gpio.OUT)
-        GPIO.output(self._reverse_pin, self.gpio.LOW)      
-        GPIO.setup(self._enable_pin, self.gpio.OUT)       
+        self.gpio.setup(self._forward_pin, self.gpio.OUT)
+        self.gpio.setup(self._reverse_pin, self.gpio.OUT)
+        self.gpio.setup(self._enable_pin, self.gpio.OUT)        
+        self.gpio.output(self._reverse_pin, self.gpio.LOW)      
+        self.gpio.output(self._forward_pin, self.gpio.LOW)
         
-        self._enable = GPIO.PWM(self._enable_pin, 1000)
+        self._enable = self.gpio.PWM(self._enable_pin, 1000)
         self.static = True
 
     def set_velocity(self, magnitude):
