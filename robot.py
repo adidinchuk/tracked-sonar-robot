@@ -9,11 +9,11 @@ class Robot:
         self.right_motor = MotorControl(GPIO, enable_pin_right, forward_pin_right, reverse_pin_right, min_power)
 
     def forward(self, speed):
-        self.move(seed)
+        self.move(speed)
         return True
     
     def reverse(self, speed):
-        self.move(-seed)
+        self.move(-speed)
         return True
     
     def rotate(self, direction, speed):
