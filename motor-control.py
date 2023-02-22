@@ -54,7 +54,7 @@ if __name__ == '__main__':
     print("s-stop #-for speed e-exit")
     print("\n")  
 
-    motor_control = MotorControl(GPIO, enable_pin, forward_pin, reverse_pin, 20)
+    motor_control = MotorControl(GPIO, enable_pin, forward_pin, reverse_pin, 50)
     direction = 1
     speed = 0
 
