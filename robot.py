@@ -66,13 +66,17 @@ if __name__ == '__main__':
         
         elif x=='l':
             print("left")
-            robot.rotate(direction="left", speed=75)
+            robot.rotate(direction="left", speed=100)
             x='z'
         
         elif x=='r':
             print("right")
-            robot.rotate(direction="right", speed=75)
+            robot.rotate(direction="right", speed=100)
             x='z'
+
+        elif x=='e':
+            GPIO.cleanup()
+            break
 
         else:
             print("<<<  wrong data  >>>")
