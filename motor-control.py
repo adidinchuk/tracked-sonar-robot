@@ -10,14 +10,14 @@ class MotorControl():
         self._forward_pin = forward_pin
         self._reverse_pin = reverse_pin
         self._enable_pin = enable_pin
+        self.gpio = gpio
+        GPIO.setmode(self.gpio.BCM)
 
-        GPIO.setmode(gpio.BCM)
-
-        GPIO.setup(self._forward_pin, gpio.OUT)
-        GPIO.output(self._forward_pin, gpio.LOW)
-        GPIO.setup(self._reverse_pin, gpio.OUT)
-        GPIO.output(self._reverse_pin, gpio.LOW)      
-        GPIO.setup(self._enable_pin, gpio.OUT)       
+        GPIO.setup(self._forward_pin, self.gpio.OUT)
+        GPIO.output(self._forward_pin, self.gpio.LOW)
+        GPIO.setup(self._reverse_pin, self.gpio.OUT)
+        GPIO.output(self._reverse_pin, self.gpio.LOW)      
+        GPIO.setup(self._enable_pin, self.gpio.OUT)       
         
         self._enable = GPIO.PWM(self._enable_pin, 1000)
         self.static = True
@@ -28,17 +28,17 @@ class MotorControl():
         if magnitude == 0:
             self.stop()
         elif magnitude > 0:
-            self.gpio.output(self._forward_pin, GPIO.HIGH)
-            self.gpio.output(self._reverse_pin, GPIO.LOW)          
+            self.gpio.output(self._forward_pin, self.gpio.HIGH)
+            self.gpio.output(self._reverse_pin, self.gpio.LOW)          
         else:            
-            self.gpio.output(self._forward_pin,GPIO.LOW)
-            self.gpio.output(self._reverse_pin,GPIO.HIGH)     
+            self.gpio.output(self._forward_pin, self.gpio.LOW)
+            self.gpio.output(self._reverse_pin, self.gpio.HIGH)     
         
         self._enable.ChangeDutyCycle(self._range * (magnitude/100) + self._min_power_)
 
     def stop(self):        
-        self.gpio.output(self._forward_pin,GPIO.LOW)
-        self.gpio.output(self._reverse_pin,GPIO.LOW)
+        self.gpio.output(self._forward_pin, self.gpio.LOW)
+        self.gpio.output(self._reverse_pin, self.gpio.LOW)
         self._enable.ChangeDutyCycle(0)
         self.static = True
 
