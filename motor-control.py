@@ -20,6 +20,7 @@ class MotorControl():
         self.gpio.output(self._forward_pin, self.gpio.LOW)
         
         self._enable = self.gpio.PWM(self._enable_pin, 1000)
+        self._enable.start(0)
         self.static = True
 
     def set_velocity(self, magnitude):
