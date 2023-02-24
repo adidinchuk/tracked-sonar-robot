@@ -35,7 +35,7 @@ class MotorControl():
         else:            
             self.gpio.output(self._forward_pin, self.gpio.LOW)
             self.gpio.output(self._reverse_pin, self.gpio.HIGH)      
-            self._enable.ChangeDutyCycle(self._range * (magnitude/100) - self._min_power)
+            self._enable.ChangeDutyCycle(self._range * (-magnitude/100) + self._min_power)
 
     def stop(self):        
         self.gpio.output(self._forward_pin, self.gpio.LOW)
