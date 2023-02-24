@@ -51,10 +51,11 @@ class MotorControl():
             self.set_velocity(i)
             time.sleep(0.2)
         
-        for i in range(0, -100):
-            print("Velocity magnitude: ", i, end='\r')
-            self.set_velocity(i)
+        for i in range(0, 100):
+            print("Velocity magnitude: ", -i, end='\r')
+            self.set_velocity(-i)
             time.sleep(0.2)
+        print("")
         print("Test completed.")
         self.stop()
 
