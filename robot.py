@@ -38,7 +38,9 @@ class Robot:
         return True
     
     def test_motors(self):
+        print("Runing test on left motor.")
         self.left_motor.test()
+        print("Runing test on right motor.")
         self.right_motor.test()
 
 if __name__ == '__main__':
