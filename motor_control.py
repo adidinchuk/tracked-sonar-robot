@@ -45,17 +45,18 @@ class MotorControl():
 
     def test(self):
         print("Executing motion test.")
-        print("Velocity magnitude: 0", end='')
+        print("Velocity magnitude: 0", end='\r')
         for i in range(0, 100):
-            print("Velocity magnitude: ", i, end='')
+            print("Velocity magnitude: ", i, end='\r')
             self.set_velocity(i)
             time.sleep(0.2)
         
         for i in range(0, -100):
-            print("Velocity magnitude: ", i, end='')
+            print("Velocity magnitude: ", i, end='\r')
             self.set_velocity(i)
             time.sleep(0.2)
         print("Test completed.")
+        self.stop()
 
 
 if __name__ == '__main__':
