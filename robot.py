@@ -36,6 +36,10 @@ class Robot:
         self.left_motor.set_velocity(speed)
         self.right_motor.set_velocity(speed)
         return True
+    
+    def test_motors(self):
+        self.left_motor.test()
+        self.right_motor.test()
 
 if __name__ == '__main__':
     robot = Robot()
@@ -44,6 +48,8 @@ if __name__ == '__main__':
     print("Running motor control test on default pins")
     print("s-stop f-forward r-reverse l-left r-right e-exit")
     print("\n")  
+
+    robot.test_motors()
 
     while(1):
 
