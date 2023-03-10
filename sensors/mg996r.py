@@ -11,7 +11,7 @@ class MG996R():
         self.p.start(self.get_dc_value(0))
 
     def get_dc_value(self, angle):        
-        return ((angle + 90) / 180) * (self.high - self.low) + self
+        return ((angle + 90) / 180) * (self.high - self.low) + self.low
 
     def update_bearing(self, angle):
         self.p.ChangeDutyCycle(self.get_dc_value(angle))
