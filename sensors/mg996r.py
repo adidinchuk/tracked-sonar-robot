@@ -30,7 +30,7 @@ if __name__ == '__main__':
     sg90.update_angle(-90)
     time.sleep(1)
     print("setting 90%...")
-    sg90.update_angle(-4)
+    sg90.update_angle(-5)
     time.sleep(1)
     print("setting 180%...")
     sg90.update_angle(90)
