@@ -24,7 +24,7 @@ if __name__ == '__main__':
     print("Executing SG90 test on pin: " + str(pin))
     print("Low Duty Cycle threshold set to : " + str(low))
     print("High Duty Cycle threshold set to : " + str(high))
-    sg90 = SG90(GPIO, pin, low, high)
+    sg90 = MG996R(GPIO, pin, low, high)
 
     print("setting 0%...")
     sg90.update_angle(-90)
