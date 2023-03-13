@@ -33,7 +33,7 @@ if __name__ == '__main__':
     sg90.update_angle(-5.75)
     time.sleep(1)
     print("setting 180%...")
-    sg90.update_angle(174.25)
+    sg90.update_angle(170)
     time.sleep(1)
     print("Test complete...")
     GPIO.cleanup()
