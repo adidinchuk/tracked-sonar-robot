@@ -21,7 +21,7 @@ class MG996R():
 
 if __name__ == '__main__':
     pin = 3
-    low = 5
+    low = 5.2
     high = 10
     GPIO.setmode(GPIO.BOARD)
     print("Executing SG90 test on pin: " + str(pin))
@@ -29,15 +29,9 @@ if __name__ == '__main__':
     print("High Duty Cycle threshold set to : " + str(high))
     sg90 = MG996R(GPIO, pin, low, high)
 
-    print("setting 0%...")
-    sg90.update_angle(-180)
-    time.sleep(3)
-    print("setting 90%...")
-    sg90.update_angle(0)
-    time.sleep(3)
-    print("setting 180%...")
-    sg90.update_angle(180)
-    time.sleep(3)
+    for i in range(0,180):
+        sg90.update_angle(i-90)
+        time.sleep(0.1)    
 
     print("Test complete...")
     GPIO.cleanup()
