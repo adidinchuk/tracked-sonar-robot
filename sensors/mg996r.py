@@ -22,7 +22,7 @@ class MG996R():
 if __name__ == '__main__':
     pin = 3
     low = 5
-    high = 9.9
+    high = 10
     GPIO.setmode(GPIO.BOARD)
     print("Executing SG90 test on pin: " + str(pin))
     print("Low Duty Cycle threshold set to : " + str(low))
