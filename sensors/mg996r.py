@@ -16,10 +16,13 @@ class MG996R():
     def update_angle(self, angle):
         self.p.ChangeDutyCycle(self.get_dc_value(angle))
 
+    def update_dc_value(self, value):
+        self.p.ChangeDutyCycle(value)
+
 if __name__ == '__main__':
     pin = 3
-    low = 5
-    high = 10
+    low = 4.92
+    high = 10.278
     GPIO.setmode(GPIO.BOARD)
     print("Executing SG90 test on pin: " + str(pin))
     print("Low Duty Cycle threshold set to : " + str(low))
@@ -27,13 +30,26 @@ if __name__ == '__main__':
     sg90 = MG996R(GPIO, pin, low, high)
 
     print("setting 0%...")
-    sg90.update_angle(-185.75)
+    sg90.update_dc_value(-180)
     time.sleep(1)
     print("setting 90%...")
-    sg90.update_angle(-5.75)
+    sg90.update_angle(0)
     time.sleep(1)
     print("setting 180%...")
-    sg90.update_angle(170)
+    sg90.update_angle(180)
     time.sleep(1)
+
     print("Test complete...")
     GPIO.cleanup()
+
+
+#low = 5
+#high = 10
+
+#sg90.update_angle(-185.75)
+#time.sleep(1)
+#print("setting 90%...")
+#sg90.update_angle(-5.75)
+#time.sleep(1)
+#print("setting 180%...")
+#sg90.update_angle(164)
