@@ -30,7 +30,7 @@ if __name__ == '__main__':
     sg90 = MG996R(GPIO, pin, low, high)
 
     print("setting 0%...")
-    sg90.update_dc_value(-180)
+    sg90.update_angle(-180)
     time.sleep(1)
     print("setting 90%...")
     sg90.update_angle(0)
