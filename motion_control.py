@@ -76,7 +76,7 @@ if __name__ == '__main__':
             position_control.rotate(direction="left", speed=100)
             x='z'
         
-        elif x=='r':
+        elif x=='t':
             print("right")
             position_control.rotate(direction="right", speed=100)
             x='z'
