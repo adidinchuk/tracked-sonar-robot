@@ -14,7 +14,7 @@ class Robot():
 
     def __init__(self, track_spacing, initial_pose=np.array([[0,0,0]])):
         self.pose = initial_pose
-        self.motion_controller = MotionControl(enable_pin_left=14, forward_pin_left=15, reverse_pin_left=18, enable_pin_right=17, forward_pin_right=27, reverse_pin_right=22)
+        self.motion_controller = MotionControl(forward_pin_left=15, reverse_pin_left=18, forward_pin_right=27, reverse_pin_right=22)
         self.track_spacing = track_spacing
         #TODO set correct alphas
         alphas = np.array([0.001, 0.001, 0.001, 0.001, 0.001, 0.001])

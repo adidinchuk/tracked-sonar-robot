@@ -3,27 +3,24 @@ import time
 
 class MotorControl():
 
-    def __init__(self, gpio, forward_pin, reverse_pin, min_power):
+    def __init__(self, gpio, enable_pin, forward_pin, reverse_pin, min_power):
         
         self._min_power = min_power
         self._range = 100 - self._min_power
         self._forward_pin = forward_pin
         self._reverse_pin = reverse_pin
+        self._enable_pin = enable_pin
         self.gpio = gpio
         self.gpio.setmode(self.gpio.BCM)
 
         self.gpio.setup(self._forward_pin, self.gpio.OUT)
         self.gpio.setup(self._reverse_pin, self.gpio.OUT)
-   
+        self.gpio.setup(self._enable_pin, self.gpio.OUT)        
         self.gpio.output(self._reverse_pin, self.gpio.LOW)      
         self.gpio.output(self._forward_pin, self.gpio.LOW)
         
-        self._forward = self.gpio.PWM(self._forward_pin, 1000)
-        self._reverse = self.gpio.PWM(self._reverse_pin, 1000)
-
-        self._forward.start(0)
-        self._reverse.start(0)
-
+        self._enable = self.gpio.PWM(self._enable_pin, 1000)
+        self._enable.start(0)
         self.static = True
 
     def set_velocity(self, magnitude):
@@ -32,21 +29,18 @@ class MotorControl():
         if magnitude == 0:
             self.stop()
         elif magnitude > 0:
-            self._forward.ChangeDutyCycle(self._range * (magnitude/100) + self._min_power) 
-            self._reverse.ChangeDutyCycle(0) 
             self.gpio.output(self._forward_pin, self.gpio.HIGH)
             self.gpio.output(self._reverse_pin, self.gpio.LOW)
-        else:      
-            self._reverse.ChangeDutyCycle(self._range * (magnitude/100) + self._min_power) 
-            self._forward.ChangeDutyCycle(0)       
+            self._enable.ChangeDutyCycle(self._range * (magnitude/100) + self._min_power)    
+        else:            
             self.gpio.output(self._forward_pin, self.gpio.LOW)
             self.gpio.output(self._reverse_pin, self.gpio.HIGH)      
+            self._enable.ChangeDutyCycle(self._range * (-magnitude/100) + self._min_power)
 
     def stop(self):        
         self.gpio.output(self._forward_pin, self.gpio.LOW)
         self.gpio.output(self._reverse_pin, self.gpio.LOW)
-        self._forward.ChangeDutyCycle(0) 
-        self._reverse.ChangeDutyCycle(0) 
+        self._enable.ChangeDutyCycle(0)
         self.static = True
 
     def test(self):
