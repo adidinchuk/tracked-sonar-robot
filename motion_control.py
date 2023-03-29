@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO
 
 class MotionControl:
 
-    def __init__(self, forward_pin_left=14, reverse_pin_left=15, \
-    forward_pin_right=17, reverse_pin_right=27, min_power=50):
+    def __init__(self, forward_pin_left=17, reverse_pin_left=27, \
+    forward_pin_right=22, reverse_pin_right=23, min_power=50):
         self.left_motor = MotorControl(GPIO, forward_pin_left, reverse_pin_left, min_power)
         self.right_motor = MotorControl(GPIO, forward_pin_right, reverse_pin_right, min_power)
 
